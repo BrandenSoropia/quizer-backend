@@ -20,4 +20,31 @@ const answerSchema = mongoose.Schema({
   }
 });
 
+/**
+ * Return promise that passes newly created/updated document iff no err occurred.
+ * Otherwise, promise passes error.
+ */
+answerSchema.statics.set = function (data) {
+  const text = data.text;
+  const img = data.img;
+
+
+  return this.find({ text: text, img: img })
+    .then(function(results) {
+      // No duplicates, create new answer
+      if (results.length === 0) {
+        this.create(data, function(err, instance) {
+          if (err) return err;
+
+          return instance
+        })
+      } else { // Update existing answer
+
+      }
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+};
+
 module.exports = mongoose.model('Answer', answerSchema);
