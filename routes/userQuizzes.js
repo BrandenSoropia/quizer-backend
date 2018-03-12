@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const userModel = require('../models/user');
+const UserQuizModel = require('../models/user_quiz');
 
-/* GET users listing. */
 router.get('/create', function(req, res, next) {
-  userModel.createWithLoginKey()
-  .then(function(userInstance) {
-    res.send(userInstance);
+  const params = req.body;
+  
+  UserQuizModel.createWithGivenQuizAndUserIds(params)
+  .then(function(userQuizInstance) {
+      res.send(userQuizInstance);
   })
   .catch(function(err) {
     res.status(500).send({message: err.message})

@@ -5,7 +5,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const cors = require('cors');
 
 // Routes
 const index = require('./routes/index');
@@ -13,6 +12,7 @@ const users = require('./routes/users');
 const questions = require('./routes/questions');
 const answers = require('./routes/answers');
 const quizzes = require('./routes/quizzes');
+const userQuizzes = require('./routes/userQuizzes');
 
 const app = express();
 
@@ -47,12 +47,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/questions', questions);
 app.use('/answers', answers);
 app.use('/quizzes', quizzes);
+app.use('/user-quizzes', userQuizzes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

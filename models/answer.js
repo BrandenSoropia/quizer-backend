@@ -38,7 +38,7 @@ answerSchema.statics.set = function (data) {
 
           return instance
         })
-      } else { // Update existing answer
+      } else { // TODO: Update existing answer
 
       }
     })

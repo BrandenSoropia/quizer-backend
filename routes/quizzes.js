@@ -21,7 +21,7 @@ router.post('/create', function(req, res, next) {
 /**
  * Return a list of all quizzes.
  */
-router.get('/get_all', function(req, res, next) {
+router.get('/get-all', function(req, res, next) {
   QuizModel.find({})
     .then(function(quizInstances) {
       res.send(quizInstances);
@@ -34,7 +34,7 @@ router.get('/get_all', function(req, res, next) {
 /**
  * Return a quiz with populated questions and answers.
  */
-router.post('/find_by_id', function(req, res, next) {
+router.post('/find-by-id', function(req, res, next) {
   const id = req.body.id;
   console.log(req.body)
   // TODO: Handle invalid object id

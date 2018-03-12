@@ -26,7 +26,7 @@ router.post('/create', function(req, res, err) {
 /**
  * Return all questions.
  */
-router.get('/get_all', function(req, res, err) {
+router.get('/get-all', function(req, res, err) {
   QuestionModel.find({})
     .populate('answers') // Populate answers with actual information
     .exec(function(err, questions) {
