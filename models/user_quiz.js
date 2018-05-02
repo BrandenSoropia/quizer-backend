@@ -16,29 +16,25 @@ const userQuizSchema = mongoose.Schema({
   },
   completion_date: {
       type: Date,
-      required: true
-  }
+  },
+}, {
+  timestamps: true
 });
 
 /**
  * Create a promise to return a quiz with given questions (and their respective answers)
  */
-userQuizSchema.statics.createWithGivenQuizAndUserIds = function({ quiz_id, user_id }) {
+userQuizSchema.statics.createWithGivenQuizAndUserIds = function(quizId, userId, completionDate) {
   const _this = this;
-  return this.find({ quiz_id, user_id })
+  return this.find({ quiz_id: quizId, user_id: userId })
   .then(function(results) {
         if (results.length === 0) {
-            _this.create({ quiz_id, user_id }, function(err, instance) {
-                if (err) return err;
-
-                return instance;
+            return _this.create({ quiz_id: quizId, user_id: userId, completion_date: completionDate });
+        } else {
+            throw new Error({
+              message: "User already completed the quiz!"
             })
-        } else { // TODO: Report back that this user has already completed this quiz
-            
         }
-    })
-    .catch(function(err) {
-      console.log(err);
     })
 };
 

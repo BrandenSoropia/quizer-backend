@@ -36,7 +36,6 @@ router.get('/get-all', function(req, res, next) {
  */
 router.post('/find-by-id', function(req, res, next) {
   const id = req.body.id;
-  console.log(req.body)
   // TODO: Handle invalid object id
   QuizModel.find({ '_id': id })
     .populate({ // Populate questions and answers with their information
