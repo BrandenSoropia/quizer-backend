@@ -18,6 +18,19 @@ router.post('/create', function(req, res, next) {
     })
 });
 
+// Get quiz between a time frame
+router.post('/current-quiz', function(req, res, err) {
+  const date = req.body.date;
+  QuizModel.findOne({ start_date: { $lte: date }, end_date: { $gte: date } })
+    .then(function(quiz) {
+      console.log(quiz)
+      res.send(quiz);
+    })
+    .catch(function(error) {
+      res.status(500).send({ message: error.message });
+    })
+})
+
 /**
  * Return a list of all quizzes.
  */
