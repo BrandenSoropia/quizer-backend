@@ -15,10 +15,17 @@ const quizSchema = mongoose.Schema({
     }],
     required: true
   },
-  available_to: [{ // Limit access to these users.
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }]
+  start_date: {
+    type: Date,
+    required: true
+  },
+
+  end_date: {
+    type: Date,
+    required: true
+  }
+}, {
+  timestamps: true
 });
 
 /**
@@ -26,6 +33,8 @@ const quizSchema = mongoose.Schema({
  */
 quizSchema.statics.createWithGivenQuestions = function(data) {
   const questionsData = data.questions;
+  const start_date = data.start_date;
+  const end_date = data.end_date;
   const _this = this;
 
   // Create all questions and their respective answers first
@@ -49,6 +58,8 @@ quizSchema.statics.createWithGivenQuestions = function(data) {
         });
         // Replace list of question data with list of question instance ids
         data.questions = questionIds;
+        data.start_date = start_date;
+        data.end_date = end_date;
 
         _this.create(data)
           .then(function(quizInstance) {
