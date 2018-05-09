@@ -20,14 +20,19 @@ router.post('/create', function(req, res, next) {
 
 // Get quiz between a time frame
 router.post('/current-quiz', function(req, res, err) {
-  const date = req.body.date;
-  QuizModel.findOne({ start_date: { $lte: date }, end_date: { $gte: date } })
-    .then(function(quiz) {
-      console.log(quiz)
-      res.send(quiz);
+  const current_date = req.body.current_date;
+  QuizModel.findOne({ start_date: { $lte: current_date }, end_date: { $gte: current_date } })
+    .populate({ // Populate questions and answers with their information
+      path: 'questions',
+      populate: {
+        path: 'answers',
+        model: 'Answer'
+      }
     })
-    .catch(function(error) {
-      res.status(500).send({ message: error.message });
+    .exec(function(err, quiz) {
+      if (err) return res.status(500).send({message: err.message});
+
+      res.send(quiz);
     })
 })
 
