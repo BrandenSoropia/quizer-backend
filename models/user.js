@@ -8,11 +8,12 @@ const userSchema = mongoose.Schema({
   }
 });
 
-userSchema.statics.createWithLoginKey = function() {
+userSchema.statics.createWithLoginKey = function(data) {
+  const loginData = data.login_key;
   const _this = this;
 
   return new Promise(function(resolve, reject) {
-    _this.create({ login_key: faker.random.words() })
+    _this.create({ login_key: faker.random.word() + faker.random.number() })
       .then(function(user) {
         resolve(user);
       })
