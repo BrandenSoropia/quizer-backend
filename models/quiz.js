@@ -4,6 +4,8 @@ const QuestionModel = require('./question');
 
 const quizSchema = mongoose.Schema({
   name: String, // For text questions
+  desc: String, // Quiz description
+  img: String,
   creator_id: {
     type: Schema.Types.ObjectId,
     ref: 'User'
