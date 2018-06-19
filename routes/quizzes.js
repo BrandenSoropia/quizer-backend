@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const QuizModel = require('../models/quiz');
+const UserQuizModel = require('../models/user_quiz');
 
 /**
  * Create quiz given name, creator id, available to list of users
@@ -70,5 +71,20 @@ router.post('/find-by-id', function(req, res, next) {
     })
 });
 
+
+router.post('/mark-complete', function(req, res, next) {
+  const params = req.body;
+  const quizId = params.quiz_id;
+  const userId = params.user_id;
+  const completionDate = params.completion_date;
+
+  UserQuizModel.createWithGivenQuizAndUserIds(quizId, userId, completionDate)
+  .then(function(userQuizInstance) {
+    res.send(userQuizInstance);
+  })
+  .catch(function(err) {
+    res.status(500).send({message: err.message})
+  })
+});
 
 module.exports = router;
