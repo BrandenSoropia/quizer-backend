@@ -19,9 +19,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-text.txt
-package-lock.json
-
-.vscode/
-public/

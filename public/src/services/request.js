@@ -9,6 +9,7 @@ const request = {
   },
 
   post: (endpoint, params) => {
+    console.log(endpoint);
     return fetch(endpoint, {
       method: 'POST',
       headers: {
