@@ -22,7 +22,6 @@ yarn-error.log*
 
 text.txt
 package-lock.json
-yarn.lock
 
 .vscode/
 public/
