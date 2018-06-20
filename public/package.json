@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cd public && npm install && npm run build",
+    "heroku-postbuild": "echo hello && cd public && npm install && npm run build",
     "build-frontend": "cd public && npm install && npm run build"
   },
   "devDependencies": {},
