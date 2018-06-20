@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "PT Serif", serif;
+    font-size: 1.5em;
+    color: gray;
+    letter-spacing: 1px;
+}
+
+h1{
+    color:gray;
+    font-size:2em;
+}
+
+.button{
+    background-color: #00be46;
+    color: white;
+    padding: 10px 100px;
+    border: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5em;
+}
+
+.desc{
+    padding: 0em 10em;
+}
+
+input{
+    font-size:2em;
+    font-variant: small-caps;
+}
+
+input[type=text]{
+    color: green;
+    font-variant: none;
+    width:300px;
+    border: 1px solid gray;
+    border-bottom: 3px solid gray;
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+input[type=submit]{
+    color: white;
+    font-size:2em;
+    border: none;
+    padding: 20px 50px;
+    background-color: #00be46;
+}

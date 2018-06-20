@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "local": "FRONTEND_URL=http://localhost:3000 DB_URL=mongodb://127.0.0.1:27017/test nodemon ./bin/www",
+    "local": "REACT_APP_API_URL=http://localhost:3001 FRONTEND_URL=http://localhost:3000 DB_URL=mongodb://127.0.0.1:27017/test nodemon ./bin/www",
     "mongod": "mongod --dbpath ./db",
     "mongo-shell": "mongo --host 127.0.0.1:27017"
   },
