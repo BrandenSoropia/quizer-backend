@@ -18,8 +18,9 @@ const userQuizzes = require('./routes/userQuizzes');
 const app = express();
 
 // Connect to appropriate DB based on env
-// TODO: Update to read from env variable
-mongoose.connect('mongodb://127.0.0.1:27017/test')
+
+mongoose.connect(process.env.DB_URL)
+
   .then(
     function() { // Connect success
       console.log('Connection successful')
@@ -39,14 +40,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/build')));
 
-// var corsOptions = {
-//   origin: process.env.FRONTEND_URL,
-//   methods: ['GET', 'POST'],
-//   allowedHeaders: ['X-Requested-With', 'X-HTTP-Method-Override', 'Content-Type', 'Accept'],
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
 app.use(cors());
 
 app.use(function(req, res, next) {
