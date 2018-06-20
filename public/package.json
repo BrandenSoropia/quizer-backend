@@ -19,9 +19,7 @@
     "local": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "echo hello && cd public && npm install && npm run build",
-    "build-frontend": "cd public && npm install && npm run build"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {},
   "proxy": "http://localhost:3001"
