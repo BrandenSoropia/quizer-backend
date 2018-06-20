@@ -7,7 +7,7 @@
     "local": "DB_URL=mongodb://127.0.0.1:27017/test nodemon ./bin/www",
     "mongod": "mongod --dbpath ./db",
     "mongo-shell": "mongo --host 127.0.0.1:27017",
-    "heroku-postbuild": "echo hello && cd public && npm install && npm run build",
+    "heroku-postbuild": "cd public && npm install && npm run build",
     "build-frontend": "cd public && npm install && npm run build"
   },
   "dependencies": {
