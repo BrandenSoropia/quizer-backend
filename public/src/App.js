@@ -89,7 +89,7 @@ class App extends Component {
             <Quiz
               name={this.state.name}
               desc={this.state.desc}
-              // img={this.state.img}
+              img={this.state.img}
               questions={this.state.questions}
               setQuizCompleted={this.setQuizCompleted}
             />

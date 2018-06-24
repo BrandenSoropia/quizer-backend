@@ -68,11 +68,11 @@ class Quiz extends Component {
                 {desc.split('.')[1]}.<p />
 
             </p>
-            {/* <img src={require(`../static/${img}`)} /> */}
+            <img src={require(`../static/${img}`)} />
             <p />
             <button class="button" onClick={this.onBeginClick}>{'Begin'}</button>
             <br />
-            <img src={Carrot} alt="Cartoon carrot waving with left hand." />
+            <img src={CarrotFlipped} alt="Cartoon carrot waving with left hand." />
             <img
               src={CarrotFlipped}
               alt="Cartoon carrot waving with right hand."
