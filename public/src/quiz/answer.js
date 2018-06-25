@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background: ${({ isClicked, isCorrect, disabled }) => { 
-    if ((isClicked && isCorrect) || (isCorrect && disabled)) return 'rgb(22, 255, 0)';
-  }}
+  background-color: ${({ isClicked, isCorrect, disabled }) => 
+    (isCorrect && (isClicked || disabled)) ? 'rgb(64, 179, 79)' : 'rgb(26,	160, 197)'
+  };
+  border-radius: 40px;
+  font-size: 1.2rem;
+  padding: 12px;
+  margin: 5px;
+  width: 75%;
+  color: white;
 `
 class Answer extends Component {
   constructor(props) {

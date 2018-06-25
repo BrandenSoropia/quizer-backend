@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './App.css';
 import Quiz from './quiz';
 import services from './services';
 import LoginForm from './login';
 import QuizCompleted from './quiz/quiz-completed';
+
+const AppContainer = styled.div`
+  @media (min-width: 700px) {
+    display: flex;
+    align-items: column;
+    justify-content: center;
+    margin: 5%;
+  }
+`
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +80,6 @@ class App extends Component {
         });
       })
       .catch(error => {
-        // TODO: Display error after standardized errors on backend
         alert(error);
       });
   }
@@ -79,7 +88,7 @@ class App extends Component {
     const { isQuizComplete } = this.state;
 
     return (
-      <div className="App">
+      <AppContainer className="App">
         {this.isLoggedIn() &&
           isQuizComplete && (
             <QuizCompleted markUserQuizCompleted={this.markUserQuizCompleted} />
@@ -95,7 +104,7 @@ class App extends Component {
             />
           )}
         {!this.isLoggedIn() && <LoginForm setUserId={this.setUserId} />}
-      </div>
+      </AppContainer>
     );
   }
 }

@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Question from './question';
 import _ from 'lodash';
+import styled from 'styled-components';
 
 import Carrot from '../static/carrot-welcome.png';
 import CarrotFlipped from '../static/carrot-welcome-flipped.png';
+
+const QuizContainer = styled.div`
+  width: 100%;
+`
 
 class Quiz extends Component {
   constructor(props) {
@@ -42,7 +47,7 @@ class Quiz extends Component {
     if (_.isEmpty(questions)) return null;
 
     return (
-      <div className="QuizContainer">
+      <QuizContainer className="QuizContainer">
         {this.state.showQuiz ? (
           <Question
             quizProgress={{
@@ -58,8 +63,8 @@ class Quiz extends Component {
           />
         ) : (
           <div>
-            <p class="desc">
-                Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food
+            <p className="desc">
+                Welcome to {name} of our 12 week Learn-&amp;-Earn journey, reducing food
                 waste from field to fork. Try all of our quizzes and win an
                 opportunity to earn $50 President&apos;s Choice gift card. Learn
                 more by following the link at the end of today&apos;s{' '}
@@ -70,7 +75,7 @@ class Quiz extends Component {
             </p>
             <img src={require(`../static/welcome/${img}`)} />
             <p />
-            <button class="button" onClick={this.onBeginClick}>{'Begin'}</button>
+            <button className="button" onClick={this.onBeginClick}>{'Begin'}</button>
             <br />
             <img src={CarrotFlipped} alt="Cartoon carrot waving with left hand." />
             <img
@@ -79,7 +84,7 @@ class Quiz extends Component {
             />
           </div>
         )}
-      </div>
+      </QuizContainer>
     );
   }
 }

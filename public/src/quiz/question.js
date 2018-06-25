@@ -1,11 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Answer from './answer';
+import styled from 'styled-components';
 
 // Images
 import LettuceShrug from '../static/lettuce_shrug.png';
 import LettuceRightAnswer from '../static/lettuce_right_answer.png';
 import LettuceWrongAnswer from '../static/lettuce_wrong_answer.png';
+
+const QuizProgress = styled.h2`
+  text-align: right;
+  padding-right: 10%;
+`
+
+const AnswerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: no-wrap;
+`
+
+const QuestionText = styled.p`
+  color: dark-grey;
+  font-size: 1.2rem;
+`
+
+const NextButton = styled.button`
+  background-color: gray;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  padding: 12px;
+  margin: 5px;
+  width: 50%;
+  color: white;
+`
 
 class Question extends Component {
   constructor(props) {
@@ -71,6 +99,10 @@ class Question extends Component {
 
     return (
       <div className="Question">
+        <QuizProgress>{`Question ${quizProgress.currentQuestion}/${
+              quizProgress.totalQuestions
+            }`}
+        </QuizProgress>
         {disableAnswers && (
           <React.Fragment>
             <h2>{correctAnswerSelected ? 'Yes!' : 'Nice guess!'}</h2>
@@ -84,33 +116,34 @@ class Question extends Component {
             </h2>
           </React.Fragment>
         )}
+        <div>
         {!disableAnswers && (
           <React.Fragment>
-            <h2>{`Question ${quizProgress.currentQuestion} out of ${
-              quizProgress.totalQuestions
-            }`}</h2>
             <img src={LettuceShrug} />
-            <h2>{text}</h2>
+            <QuestionText>{text}</QuestionText>
           </React.Fragment>
         )}
-        {answers.map((answer, idx) => (
-          <Answer
-            key={`answer-${idx}`}
-            text={answer.text}
-            isCorrect={answer.isCorrect}
-            isDisabled={disableAnswers}
-            handleAnswerClicked={() =>
-              this.handleAnswerClicked(answer.isCorrect)
-            }
-          />
-        ))}
+        </div>
+        <AnswerContainer>
+          {answers.map((answer, idx) => (
+            <Answer
+              key={`answer-${idx}`}
+              text={answer.text}
+              isCorrect={answer.isCorrect}
+              isDisabled={disableAnswers}
+              handleAnswerClicked={() =>
+                this.handleAnswerClicked(answer.isCorrect)
+              }
+            />
+          ))}
+        </AnswerContainer>
         {disableAnswers &&
           !isLastQuestion && (
-            <button onClick={onNextQuestionClick}>{'Next Question'}</button>
+            <NextButton onClick={onNextQuestionClick}>{'Next Question'}</NextButton>
           )}
         {disableAnswers &&
           isLastQuestion && (
-            <button onClick={setQuizCompleted}>{'Done!'}</button>
+            <NextButton onClick={setQuizCompleted}>{'Done!'}</NextButton>
           )}
       </div>
     );
