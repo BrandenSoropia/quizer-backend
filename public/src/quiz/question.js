@@ -4,9 +4,25 @@ import Answer from './answer';
 import styled from 'styled-components';
 
 // Images
-import LettuceShrug from '../static/lettuce_shrug.png';
+import Lettuce from '../static/lettuce_shrug.png';
 import LettuceRightAnswer from '../static/lettuce_right_answer.png';
 import LettuceWrongAnswer from '../static/lettuce_wrong_answer.png';
+import Garlic from '../static/garlic_shrug.png';
+import GarlicRightAnswer from '../static/garlic_right_answer.png';
+import GarlicWrongAnswer from '../static/garlic_wrong_answer.png';
+import Potato from '../static/potato_shrug.png';
+import PotatoRightAnswer from '../static/potato_right_answer.png';
+import PotatoWrongAnswer from '../static/potato_wrong_answer.png';
+import Tomato from '../static/tomato_shrug.png';
+import TomatoRightAnswer from '../static/tomato_right_answer.png';
+import TomatoWrongAnswer from '../static/tomato_wrong_answer.png';
+
+var mascots = [
+   Lettuce, Garlic, Potato, Tomato
+];
+
+var rightImgs = [LettuceRightAnswer, GarlicRightAnswer, PotatoRightAnswer, TomatoRightAnswer];
+var wrongImgs = [LettuceWrongAnswer, GarlicWrongAnswer, PotatoWrongAnswer, TomatoWrongAnswer];
 
 const QuizProgress = styled.h2`
   text-align: right;
@@ -108,7 +124,8 @@ class Question extends Component {
             <h2>{correctAnswerSelected ? 'Yes!' : 'Nice guess!'}</h2>
             <img
               src={
-                correctAnswerSelected ? LettuceRightAnswer : LettuceWrongAnswer
+                correctAnswerSelected ? rightImgs[(quizProgress.currentQuestion - 1) % mascots.length] :
+                wrongImgs[(quizProgress.currentQuestion - 1) % mascots.length]
               }
             />
             <h2>
@@ -119,7 +136,7 @@ class Question extends Component {
         <div>
         {!disableAnswers && (
           <React.Fragment>
-            <img src={LettuceShrug} />
+            <img src={mascots[(quizProgress.currentQuestion - 1) % mascots.length]} />
             <QuestionText>{text}</QuestionText>
           </React.Fragment>
         )}
