@@ -68,7 +68,7 @@ class Quiz extends Component {
                 {desc.split('.')[1]}.<p />
 
             </p>
-            <img src={require(`../static/${img}`)} />
+            <img src={require(`../static/welcome/${img}`)} />
             <p />
             <button class="button" onClick={this.onBeginClick}>{'Begin'}</button>
             <br />
