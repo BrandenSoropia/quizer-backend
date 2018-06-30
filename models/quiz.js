@@ -30,6 +30,24 @@ const quizSchema = mongoose.Schema({
   timestamps: true
 });
 
+quizSchema.statics.getAllQuizIds = function() {
+  const _this = this;
+  return new Promise(function(resolve, reject) {
+    // Get all quizzes sorted by ascending order of start date
+    _this.find({}, null, { sort: { start_date: 1 } }, function(err, quizzes) {
+      if (err) {
+        reject(err);
+      } else {
+        const allQuizIds = quizzes.map(function(quiz) {
+          return quiz._id;
+        })
+
+        resolve(allQuizIds);
+      }
+    })
+  })
+}
+
 /**
  * Create a promise to return a quiz with given questions (and their respective answers)
  */
