@@ -20,8 +20,7 @@ router.post('/create', function(req, res, next) {
 */
 
 // Given time range, find number of complete
-router.post('/generate-report', function(req, res, next) {
-  
+router.get('/generate-report', function(req, res, next) {
   UserQuizModel.generateReport()
   .then(function(report) {
     res.send(report);
