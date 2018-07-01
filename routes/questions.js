@@ -6,7 +6,7 @@ const QuestionModel = require('../models/question');
 /**
  * Create question given its text, images, explanation and answers.
  */
- /*
+
 router.post('/create', function(req, res, err) {
   const params = req.body;
   const answersData = params.answers;
@@ -23,11 +23,11 @@ router.post('/create', function(req, res, err) {
       res.status(500).send({message: err.message})
     })
 });
-*/
+
 /**
  * Return all questions.
  */
- /*
+
 router.get('/get-all', function(req, res, err) {
   QuestionModel.find({})
     .populate('answers') // Populate answers with actual information
@@ -37,5 +37,5 @@ router.get('/get-all', function(req, res, err) {
       res.send(questions);
     })
 });
-*/
+
 module.exports = router;

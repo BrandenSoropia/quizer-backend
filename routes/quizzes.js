@@ -41,7 +41,7 @@ router.post('/current-quiz', function(req, res, err) {
 /**
  * Return a list of all quizzes.
  */
- /*
+
 router.get('/get-all', function(req, res, next) {
   QuizModel.find({})
     .then(function(quizInstances) {
@@ -51,7 +51,7 @@ router.get('/get-all', function(req, res, next) {
       res.status(500).send({message: err.message});
     })
 });
-*/
+
 /**
  * Return a quiz with populated questions and answers.
  */

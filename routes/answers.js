@@ -5,7 +5,7 @@ const AnswerModel = require('../models/answer');
 /**
  * Create answer given its text or image, and is correct for associated question.
  */
- /*
+
 router.post('/create', function(req, res, next) {
   const params = req.body;
 
@@ -16,5 +16,5 @@ router.post('/create', function(req, res, next) {
     res.send(instance);
   });
 });
-*/
+
 module.exports = router;
