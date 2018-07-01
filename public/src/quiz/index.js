@@ -80,13 +80,15 @@ class Quiz extends Component {
         ) : (
           <div>
             <Desc>
-                Welcome to {name} of our 12 week Learn-&amp;-Earn journey, reducing food
-                waste from field to fork. Try all of our quizzes and win an
-                opportunity to earn $50 President&apos;s Choice gift card. Learn
-                more by following the link at the end of today&apos;s{' '}
-                {questions.length} questions.<p />
-                {desc.split('.')[0]}<p />
-                {desc.split('.')[1]}.<p />
+                Learn how to reduce food waste at home and throughout our whole food system, learning tips,
+                saving money—and the planet along the way.
+                <br/>
+                Each weekly quiz earns you points towards winning a President’s Choice gift card.
+                <br/>
+                At the end of today’s quiz, explore our learning centre for tips, recipes and the answers to all of
+                today’s questions.
+                <p/>
+                {name}
 
             </Desc>
             <img src={require(`../static/welcome/${img}`)} />
