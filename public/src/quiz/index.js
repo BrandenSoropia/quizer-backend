@@ -11,6 +11,22 @@ const QuizContainer = styled.div`
   width: 100%;
 `
 
+const Desc = styled.p`
+    color: #666;
+    font-size: 1.2rem;
+    padding-left: 10%;
+    padding-right: 10%;
+`
+
+const BeginButton = styled.button`
+    color: white;
+    font-size:2em;
+    border: none;
+    border-radius: 40px;
+    padding: 20px 50px;
+    background-color: #00be46;
+`
+
 class Quiz extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +79,7 @@ class Quiz extends Component {
           />
         ) : (
           <div>
-            <p className="desc">
+            <Desc>
                 Welcome to {name} of our 12 week Learn-&amp;-Earn journey, reducing food
                 waste from field to fork. Try all of our quizzes and win an
                 opportunity to earn $50 President&apos;s Choice gift card. Learn
@@ -72,12 +88,12 @@ class Quiz extends Component {
                 {desc.split('.')[0]}<p />
                 {desc.split('.')[1]}.<p />
 
-            </p>
+            </Desc>
             <img src={require(`../static/welcome/${img}`)} />
-            <p />
-            <button className="button" onClick={this.onBeginClick}>{'Begin'}</button>
             <br />
-            <img src={CarrotFlipped} alt="Cartoon carrot waving with left hand." />
+            <BeginButton onClick={this.onBeginClick}>{'Begin'}</BeginButton>
+            <br />
+            <img src={Carrot} alt="Cartoon carrot waving with left hand." />
             <img
               src={CarrotFlipped}
               alt="Cartoon carrot waving with right hand."

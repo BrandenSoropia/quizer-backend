@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import services from '../services';
+import styled from 'styled-components';
+
+const EnterIdText = styled.h1`
+    color:gray;
+    font-size:3em;
+`
+
+const LoginInputField = styled.input`
+    color: green;
+    font-size: 1.5em;
+    font-variant: none;
+    width: 300px;
+    border: 1px solid gray;
+    border-bottom: 3px solid gray;
+    border-radius: 10px;
+    padding: 12px 20px;
+`
+
+const LoginButton = styled.input`
+    color: white;
+    font-size:2em;
+    font-variant: small-caps;
+    border: none;
+    border-radius: 40px;
+    padding: 20px 50px;
+    background-color: #00be46;
+`
 
 class LoginForm extends Component {
   constructor(props) {
@@ -36,16 +63,16 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <h1>Enter your ID:</h1>
+          <EnterIdText>Enter your ID:</EnterIdText>
           <p />
-          <input
+          <LoginInputField
             type="text"
             value={this.state.login_key}
             onChange={this.handleChange}
           />
         </label>
         <p />
-        <input type="submit" value="Login" />
+        <LoginButton type="submit" value="login" />
       </form>
     );
   }
