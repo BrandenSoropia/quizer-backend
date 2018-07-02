@@ -51,16 +51,19 @@ userQuizSchema.statics.generateReport = function() {
       { $group: { _id: "$quiz_id", users: { $push: { user_id: "$user_id" } } } },
     ])
     .exec(function(aggregateError, report) {
-      if (aggregateError) reject(aggregateError);
+      if (aggregateError) return reject(aggregateError);
 
       QuizModel.populate(report, { path: '_id', select: ['name', 'start_date', 'end_date'] }, function(quizPopulateError, populatedQuizzes) {
-        if (quizPopulateError) reject(populateError);
+        if (quizPopulateError) return reject(populateError);
 
         userModel.populate(report, [{ path: 'users.user_id', select: ['login_key', 'login_times']}], function(userPopulateError, populatedUsers) {
-          if (userPopulateError) reject(userPopulateError);
+          if (userPopulateError) return reject(userPopulateError);
           
           // Ugly clean up of messy format because mongoose is hard and no time
           const formattedReport = report.map(function(rawQuiz) {
+            // Handle empty quiz
+            if (Object.keys(rawQuiz).length === 0 && rawQuiz.constructor === Object) return {};
+
             const quiz = rawQuiz._id[0];
             const users = rawQuiz.users;
             
