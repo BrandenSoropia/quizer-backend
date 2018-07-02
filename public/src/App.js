@@ -62,7 +62,8 @@ class App extends Component {
             "Sorry we couldn't record your quiz completion. Please contact the organizer for help."
           );
         } else {
-          alert('Progress successfully recorded.');
+          alert('Progress successfully recorded. Click OK to continue.');
+          window.location.replace("https://prezi.com/view/WHcfpiL6QAq4aOR8cuXG/");
         }
       });
   }
