@@ -1,6 +1,6 @@
 {
   "name": "quizer-backend",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -18,6 +18,7 @@
     "express": "~4.15.5",
     "faker": "^4.1.0",
     "jade": "~1.11.0",
+    "json2csv": "^4.1.5",
     "mongodb": "^3.0.2",
     "mongoose": "^5.0.6",
     "morgan": "~1.9.0",

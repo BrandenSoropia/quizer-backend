@@ -51,15 +51,52 @@ userQuizSchema.statics.generateReport = function() {
       { $group: { _id: "$quiz_id", users: { $push: { user_id: "$user_id" } } } },
     ])
     .exec(function(aggregateError, report) {
-      if (aggregateError) reject(aggregateError);
+      if (aggregateError) return reject(aggregateError);
 
-      QuizModel.populate(report, { path: '_id', select: ['name', 'start_date'] }, function(quizPopulateError, populatedQuizzes) {
-        if (quizPopulateError) reject(populateError);
+      QuizModel.populate(report, { path: '_id', select: ['name', 'start_date', 'end_date'] }, function(quizPopulateError, populatedQuizzes) {
+        if (quizPopulateError) return reject(populateError);
 
-        userModel.populate(report, [{ path: 'users.user_id', select: 'login_key'}], function(userPopulateError, populatedUsers) {
-          if (userPopulateError) reject(userPopulateError);
+        userModel.populate(report, [{ path: 'users.user_id', select: ['login_key', 'login_times']}], function(userPopulateError, populatedUsers) {
+          if (userPopulateError) return reject(userPopulateError);
+          
+          // Ugly clean up of messy format because mongoose is hard and no time
+          const formattedReport = report.map(function(rawQuiz) {
+            // Handle empty quiz
+            if (Object.keys(rawQuiz).length === 0 && rawQuiz.constructor === Object) return {};
 
-          resolve(report);
+            const quiz = rawQuiz._id[0];
+            const users = rawQuiz.users;
+            
+            const startDate = quiz.start_date;
+            const endDate = quiz.end_date;
+            const formattedStartDate = new Date(startDate).toDateString();
+            const formattedEndDate = new Date(endDate).toDateString();
+            console.log(startDate)
+            console.log(new Date(startDate))
+
+            // Count the number of times a user logged in within this quiz's start and end date
+            const formattedUserStats = users.map(function(user) {
+              const numberOfTimesLoggedInForQuiz = user.user_id.login_times.reduce(function(count, dateString) {
+                const date = new Date(dateString);
+                return (date <= endDate) && (date >= startDate)
+                  ? count + 1
+                  : count
+              }, 0);
+
+              return {
+                loginKey: user.user_id.login_key,
+                loginTimes: numberOfTimesLoggedInForQuiz
+              }
+            })
+
+            return {
+              title: quiz.name,
+              duration: formattedStartDate + " - " + formattedEndDate,
+              userStats: formattedUserStats
+            }
+          })
+
+          resolve(formattedReport);
         })
       })
     })
