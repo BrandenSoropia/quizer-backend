@@ -44,7 +44,7 @@ router.get('/generate-report', function(req, res, next) {
 router.get('/generate-quiz-report', function(req, res, next) {
   UserQuizModel.generateReport()
   .then(function(completedQuizzes) {
-    const fields = [{value: 'title', label: 'Quiz Title'}, {value: 'duration', label: "Duration"}, {value: 'userStats.loginKey', label: 'Login Key'}, {value: 'userStats.loginTimes', label: 'Times Logged In'}];
+    const fields = [{value: 'title', label: 'Quiz Title'}, {value: 'duration', label: "Duration"}, {value: 'userStats.loginKey', label: 'Login Key'}];
     const json2csvParser = new Json2csvParser({ fields, unwind: ['userStats', 'userStats.login'] });
     const csv = json2csvParser.parse(completedQuizzes);
 

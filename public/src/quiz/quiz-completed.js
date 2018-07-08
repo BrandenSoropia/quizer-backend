@@ -1,7 +1,7 @@
 import React from 'react';
 import CarrotWelcome from '../static/carrot-welcome-flipped.png';
 
-const QuizCompleted = ({ markUserQuizCompleted }) => (
+const QuizCompleted = ({ redirectToLearnMore }) => (
   <div className="QuizCompleted">
     <p>
       Thank you for partaking in this week's Learn and Earn journey through
@@ -15,7 +15,7 @@ const QuizCompleted = ({ markUserQuizCompleted }) => (
     <a
       src=""
       onClick={() => {
-        markUserQuizCompleted();
+        redirectToLearnMore();
       }}
     >
       CLICK HERE

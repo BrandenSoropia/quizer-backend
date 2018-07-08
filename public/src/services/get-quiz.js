@@ -7,7 +7,6 @@ export default function getCurrentActiveQuiz(params) {
       // Currently backend sends null if no matching quiz
       return {};
     }
-
     return camelize(quiz);
   });
 }

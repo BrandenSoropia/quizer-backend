@@ -33,6 +33,7 @@ class App extends Component {
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.setQuizCompleted = this.setQuizCompleted.bind(this);
     this.markUserQuizCompleted = this.markUserQuizCompleted.bind(this);
+    this.redirectToLearnMore = this.redirectToLearnMore.bind(this);
   }
 
   isLoggedIn() {
@@ -45,10 +46,11 @@ class App extends Component {
 
   setQuizCompleted() {
     this.setState({ isQuizComplete: true });
+    this.markUserQuizCompleted();
   }
 
   markUserQuizCompleted() {
-    const { userId, quizId } = this.state;
+    const { userId, Id: quizId } = this.state;
 
     services
       .markQuizComplete({
@@ -63,9 +65,12 @@ class App extends Component {
           );
         } else {
           alert('Progress successfully recorded. Click OK to continue.');
-          window.location.replace("https://prezi.com/view/WHcfpiL6QAq4aOR8cuXG/");
         }
       });
+  }
+
+  redirectToLearnMore() {
+    window.location.replace("https://prezi.com/view/WHcfpiL6QAq4aOR8cuXG/");
   }
 
   componentDidMount() {
@@ -77,6 +82,7 @@ class App extends Component {
       .getCurrentActiveQuiz(params)
       .then(quiz => {
         this.setState(prevState => {
+          // NOTE: Quiz is camelized but it changes "id" to "Id", ew...
           return { ...quiz };
         });
       })
@@ -92,7 +98,7 @@ class App extends Component {
       <AppContainer className="App">
         {this.isLoggedIn() &&
           isQuizComplete && (
-            <QuizCompleted markUserQuizCompleted={this.markUserQuizCompleted} />
+            <QuizCompleted redirectToLearnMore={this.redirectToLearnMore} />
           )}
         {this.isLoggedIn() &&
           !isQuizComplete && (
