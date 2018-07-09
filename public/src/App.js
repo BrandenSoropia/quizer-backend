@@ -26,6 +26,7 @@ class App extends Component {
       name: '',
       desc: '',
       img: '',
+      prezi: '',
       isQuizComplete: false
     };
 
@@ -70,7 +71,7 @@ class App extends Component {
   }
 
   redirectToLearnMore() {
-    window.location.replace("https://prezi.com/view/WHcfpiL6QAq4aOR8cuXG/");
+    window.location.replace(this.state.prezi);
   }
 
   componentDidMount() {
@@ -93,7 +94,6 @@ class App extends Component {
 
   render() {
     const { isQuizComplete } = this.state;
-
     return (
       <AppContainer className="App">
         {this.isLoggedIn() &&
@@ -106,6 +106,7 @@ class App extends Component {
               name={this.state.name}
               desc={this.state.desc}
               img={this.state.img}
+              prezi={this.state.prezi}
               questions={this.state.questions}
               setQuizCompleted={this.setQuizCompleted}
             />

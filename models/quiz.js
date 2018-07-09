@@ -6,6 +6,7 @@ const quizSchema = mongoose.Schema({
   name: String, // For text questions
   desc: String, // Quiz description
   img: String,
+  prezi:String,
   creator_id: {
     type: Schema.Types.ObjectId,
     ref: 'User'
