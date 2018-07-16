@@ -35,13 +35,26 @@ userSchema.statics.createWithLoginKey = function(data) {
   const _this = this;
 
   return new Promise(function(resolve, reject) {
-    _this.create({ login_key: faker.random.word() + faker.random.number() })
-      .then(function(user) {
-        resolve(user);
-      })
-      .catch(function(err) {
-        reject(err);
-      })
+    const users = [];
+
+    // for (let i=0; i < 3; i++) {
+      // users.push({ login_key: 'testuser_' + i })
+      // users.push({ login_key: 'testuser_' + faker.random.number()})
+    // }
+    _this.insertMany(users, function(err, docs) {
+      if (err) {
+        reject(err)
+      } else {
+        console.log("made " + docs.length + " accounts")
+        resolve(docs)
+      }
+    })
+      // .then(function(user) {
+      //   resolve(user);
+      // })
+      // .catch(function(err) {
+      //   reject(err);
+      // })
   })
 };
 
