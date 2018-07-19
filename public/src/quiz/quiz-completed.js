@@ -4,13 +4,13 @@ import CarrotWelcome from '../static/carrot-welcome-flipped.png';
 const QuizCompleted = ({ redirectToLearnMore }) => (
   <div className="QuizCompleted">
     <p>
-      Thank you for partaking in this week's Learn and Earn journey through
-      foodwaste.
+      Thank you for participating in this week’s quiz.  Count today’s 10 points towards your grocery gift card!<p/>
+      Play 6 weeks of the game, you get 60 points = $10 gift card.<br/>
+      Play 12 weeks of the game, you get 120 points = $20 gift card.<br/>
     </p>
     <img src={CarrotWelcome} alt="Cartoon carrot waving." />
     <p>
-      To learn more about all of today's questions, get valuable cooking tips,
-      and count today towards your $50 gift card
+      To learn more about all of today’s questions, get great tips & recipes
     </p>
     <a
       src=""

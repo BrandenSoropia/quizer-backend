@@ -80,26 +80,27 @@ class Quiz extends Component {
         ) : (
           <div>
             <Desc>
+                Reduce waste, save money, win groceries!<p/>
                 Learn how to reduce food waste at home and throughout our whole food system, learning tips,
-                saving money—and the planet along the way.
-                <br/>
-                Each weekly quiz earns you points towards winning a President’s Choice gift card.
-                <br/>
-                At the end of today’s quiz, explore our learning centre for tips, recipes and the answers to all of
-                today’s questions.
-                <p/>
-                {name}
+                saving money—and the planet along the way.<br/>
 
-            </Desc>
-            <img src={require(`../static/welcome/${img}`)} />
-            <br />
-            <BeginButton onClick={this.onBeginClick}>{'Begin'}</BeginButton>
-            <br />
-            <img src={Carrot} alt="Cartoon carrot waving with left hand." />
-            <img
-              src={CarrotFlipped}
-              alt="Cartoon carrot waving with right hand."
-            />
+                Each weekly quiz earns you points towards winning a grocery gift card.<br/>
+
+                At the end of today’s quiz, explore our learning centre for tips, recipes and the answers to all of
+                today’s questions.<p/>
+                {name} <p/>
+
+                <img src={require(`../static/welcome/${img}`)} />
+                <br />
+                {desc} <p/>
+             </Desc>
+                <BeginButton onClick={this.onBeginClick}>{'Begin'}</BeginButton>
+                <br />
+                <img src={Carrot} alt="Cartoon carrot waving with left hand." />
+                <img
+                  src={CarrotFlipped}
+                  alt="Cartoon carrot waving with right hand."
+                />
           </div>
         )}
       </QuizContainer>
