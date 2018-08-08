@@ -11,3 +11,11 @@ Quiz Web app about food waste! Tracks user login and quiz completion! Frontend i
     > Keep login info for your use!
 5. Run `npm run local` of `yarn local` to start server that connects to DB and serves frontend.
 6. Go to `localhost:3001`, login with key generated from postman to try it out!
+
+# Screenshots
+Welcome Screen (after login):
+![Welcome Screen](/screenshots/welcome-screen.png?raw=true "Welcome Screen")
+
+Basic Quiz Walkthrough (after login):
+![Basic Quiz Walkthrough](/screenshots/food-waste-quiz.gif?raw=true "Basic Quiz Walkthrough")
+
