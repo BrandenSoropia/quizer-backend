@@ -3,8 +3,8 @@ const router = express.Router();
 const userModel = require('../models/user');
 
 /* GET users listing. */
-/*
-router.get('/create', function(req, res, next) {
+
+router.post('/create', function(req, res, next) {
   const params = req.body;
   userModel.createWithLoginKey(params)
   .then(function(userInstance) {
@@ -14,7 +14,7 @@ router.get('/create', function(req, res, next) {
     res.status(500).send({message: err.message})
   })
 });
-*/
+
 /**
  * Return a list of all users.
  */

@@ -31,16 +31,17 @@ userSchema.statics.getLoginTimesReport = function() {
 }
 
 userSchema.statics.createWithLoginKey = function(data) {
-  const loginData = data.login_key;
+  const numberOfAccounts = data.number_of_accounts;
+  console.log(numberOfAccounts)
   const _this = this;
 
   return new Promise(function(resolve, reject) {
     const users = [];
 
-    // for (let i=0; i < 3; i++) {
-      // users.push({ login_key: 'testuser_' + i })
-      // users.push({ login_key: 'testuser_' + faker.random.number()})
-    // }
+    for (let i=0; i < numberOfAccounts; i++) {
+      users.push({ login_key: 'myuser' + i })
+      //  Uncomment if you want random numbers instead: users.push({ login_key: 'myuser' + faker.random.number()})
+    }
     _this.insertMany(users, function(err, docs) {
       if (err) {
         reject(err)
