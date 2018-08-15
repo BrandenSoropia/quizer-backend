@@ -4,16 +4,16 @@ const userModel = require('../models/user');
 
 /* GET users listing. */
 
-router.post('/create', function(req, res, next) {
-  const params = req.body;
-  userModel.createWithLoginKey(params)
-  .then(function(userInstance) {
-    res.send(userInstance);
-  })
-  .catch(function(err) {
-    res.status(500).send({message: err.message})
-  })
-});
+// router.post('/create', function(req, res, next) {
+//   const params = req.body;
+//   userModel.createWithLoginKey(params)
+//   .then(function(userInstance) {
+//     res.send(userInstance);
+//   })
+//   .catch(function(err) {
+//     res.status(500).send({message: err.message})
+//   })
+// });
 
 /**
  * Return a list of all users.

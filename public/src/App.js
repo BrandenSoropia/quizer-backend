@@ -47,7 +47,6 @@ class App extends Component {
 
   setQuizCompleted() {
     this.setState({ isQuizComplete: true });
-    this.markUserQuizCompleted();
   }
 
   markUserQuizCompleted() {
@@ -98,7 +97,7 @@ class App extends Component {
       <AppContainer className="App">
         {this.isLoggedIn() &&
           isQuizComplete && (
-            <QuizCompleted redirectToLearnMore={this.redirectToLearnMore} />
+            <QuizCompleted redirectToLearnMore={this.redirectToLearnMore} markUserQuizCompleted={this.markUserQuizCompleted}/>
           )}
         {this.isLoggedIn() &&
           !isQuizComplete && (

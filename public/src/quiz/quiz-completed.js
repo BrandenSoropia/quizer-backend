@@ -1,20 +1,20 @@
 import React from 'react';
 import CarrotWelcome from '../static/carrot-welcome-flipped.png';
 
-const QuizCompleted = ({ redirectToLearnMore }) => (
+const QuizCompleted = ({ redirectToLearnMore, markUserQuizCompleted }) => (
   <div className="QuizCompleted">
     <p>
-      Thank you for participating in this week’s quiz.  Count today’s 10 points towards your grocery gift card!<p/>
-      Play 6 weeks of the game, you get 60 points = $10 gift card.<br/>
-      Play 12 weeks of the game, you get 120 points = $20 gift card.<br/>
+    Thank you for participating in this week’s quiz.
     </p>
     <img src={CarrotWelcome} alt="Cartoon carrot waving." />
     <p>
-      To learn more about all of today’s questions, get great tips & recipes
+    To learn more about all of today’s questions, get great tips &amp; recipes, and count today’s
+    points towards your grocery gift card
     </p>
     <a
       src=""
       onClick={() => {
+        markUserQuizCompleted();
         redirectToLearnMore();
       }}
     >

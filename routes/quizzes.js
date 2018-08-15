@@ -8,17 +8,17 @@ const UserQuizModel = require('../models/user_quiz');
  * and questions and their respective answers. Returns quiz.
  */
 
-router.post('/create', function(req, res, next) {
-  const params = req.body;
+// router.post('/create', function(req, res, next) {
+//   const params = req.body;
 
-  QuizModel.createWithGivenQuestions(params)
-    .then(function(quizInstance) {
-      res.send(quizInstance);
-    })
-    .catch(function(err) {
-      res.status(500).send({message: err.message});
-    })
-});
+//   QuizModel.createWithGivenQuestions(params)
+//     .then(function(quizInstance) {
+//       res.send(quizInstance);
+//     })
+//     .catch(function(err) {
+//       res.status(500).send({message: err.message});
+//     })
+// });
 
 // Get quiz between a time frame
 router.post('/current-quiz', function(req, res, err) {
