@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userModel = require('../models/user');
-
+const moment = require('moment-timezone');
 /* GET users listing. */
 
 // router.post('/create', function(req, res, next) {
@@ -35,7 +35,8 @@ router.post('/login', function(req, res, next) {
   userModel.find({ login_key: key })
       .then(function(userInstances) {
         const userInstance = userInstances[0];
-        const currentLoginTime = new Date().toDateString();
+        const currentLoginTime = moment.tz(new Date(), 'America/Toronto').format('ddd MMM DD YYYY');
+        
         userInstance.login_times.push(currentLoginTime);
         
         const updatedProperties = {
