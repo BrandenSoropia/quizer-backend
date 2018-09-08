@@ -5,7 +5,6 @@ import Quiz from './quiz';
 import services from './services';
 import LoginForm from './login';
 import QuizCompleted from './quiz/quiz-completed';
-import moment from 'moment';
 
 const AppContainer = styled.div`
   @media (min-width: 700px) {
@@ -75,8 +74,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const torontoHoursOffsetFromServerTime = 3; // it's about 3 hours ahead somewhere...
+    const time = new Date();
+    time.setHours(time.getHours() - torontoHoursOffsetFromServerTime);
     const params = {
-      current_date: moment().local().format()
+      current_date: time
     };
 
     services

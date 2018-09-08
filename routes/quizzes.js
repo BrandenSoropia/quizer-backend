@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const QuizModel = require('../models/quiz');
 const UserQuizModel = require('../models/user_quiz');
+const moment = require('moment-timezone');
 
 /**
  * Create quiz given name, creator id, available to list of users
@@ -22,7 +23,9 @@ const UserQuizModel = require('../models/user_quiz');
 
 // Get quiz between a time frame
 router.post('/current-quiz', function(req, res, err) {
-  const current_date = req.body.current_date;
+  const current_date = moment.tz(req.body.current_date, 'America/Vancouver').format();
+  console.log(current_date)
+
   QuizModel.findOne({ start_date: { $lte: current_date }, end_date: { $gte: current_date } })
     .populate({ // Populate questions and answers with their information
       path: 'questions',
