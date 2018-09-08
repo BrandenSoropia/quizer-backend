@@ -5,7 +5,7 @@ import Quiz from './quiz';
 import services from './services';
 import LoginForm from './login';
 import QuizCompleted from './quiz/quiz-completed';
-import moment from 'moment-timezone';
+import moment from 'moment';
 
 const AppContainer = styled.div`
   @media (min-width: 700px) {
@@ -76,9 +76,8 @@ class App extends Component {
 
   componentDidMount() {
     const params = {
-      current_date: moment.tz(new Date(), 'America/Toronto').utc().format()
+      current_date: moment().local().format()
     };
-    console.log(params)
 
     services
       .getCurrentActiveQuiz(params)
